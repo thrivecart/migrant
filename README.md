@@ -4,7 +4,6 @@ Database migration tool
 [![Build Status](https://travis-ci.org/fluxoft/migrant.svg?branch=master)](https://travis-ci.org/fluxoft/migrant)
 
 ```
-**/usage**
 root@vagrant-ubuntu-trusty-64:/var/www/db# ../vendor/bin/migrant 
 
 Usage:
