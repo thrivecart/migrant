@@ -1,0 +1,23 @@
+{
+	"name": "fluxoft/migrant",
+	"description": "Migrant: A simple utility for database migration.",
+	"type": "library",
+	"keywords": ["migrant", "database", "migration", "php"],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "fluxoft",
+			"email": "joe@fluxoft.com"
+		}
+	],
+	"require": {
+		"php": ">=5.4.0"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "4.1.*"
+	},
+	"autoload": {
+		"psr-4": { "Fluxoft\\Migrant\\": "src/" }
+	},
+	"bin": ["bin/migrant"]
+}

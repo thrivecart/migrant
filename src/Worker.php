@@ -1,11 +1,31 @@
-# Migrant
-Database migration tool
+<?php
 
-[![Build Status](https://travis-ci.org/fluxoft/migrant.svg?branch=master)](https://travis-ci.org/fluxoft/migrant)
+namespace Fluxoft\Migrant;
 
-```
-**/usage**
-root@vagrant-ubuntu-trusty-64:/var/www/db# ../vendor/bin/migrant 
+use Fluxoft\Migrant\Commands\Init;
+use Fluxoft\Migrant\Exceptions\CommandException;
+use Fluxoft\Migrant\Exceptions\EnvironmentException;
+
+class Worker {
+	public function Work(array $arguments, $workingFolder) {
+		if (empty($arguments)) {
+			$this->printUsage();
+		} else {
+			try {
+				$foreman = new Foreman($workingFolder);
+				$command = $foreman->GetCommand($arguments);
+				Printer::PrintMessage($command->Run());
+			} catch (CommandException $e) {
+				Printer::PrintException($e);
+				$this->printUsage();
+			} catch (\Exception $e) {
+				Printer::PrintException($e);
+			}
+		}
+	}
+
+	private function printUsage() {
+		echo <<<EOF
 
 Usage:
   migrant <command> [<params>] [<environment> (default = "development")]
@@ -30,6 +50,8 @@ Available commands:
 
   status  Report on available versus installed migrations.
             "migrant status"
-            
-root@vagrant-ubuntu-trusty-64:/var/www/db#
-```
+
+
+EOF;
+	}
+}
