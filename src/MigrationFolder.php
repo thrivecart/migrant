@@ -38,7 +38,9 @@ class MigrationFolder {
 		$hash = [];
 		foreach ($files as $file) {
 			list ($revision,) = explode('_', $file, 2);
-			$hash[$revision]  = $file;
+			if (is_int($revision) && (substr($file, -4) === '.sql')) {
+				$hash[$revision]  = $file;
+			}
 		}
 
 		ksort($hash);
