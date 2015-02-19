@@ -41,6 +41,8 @@ class MigrationFolder {
 			$hash[$revision]  = $file;
 		}
 
+		ksort($hash);
+
 		return $hash;
 	}
 

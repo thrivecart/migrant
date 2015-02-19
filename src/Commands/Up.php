@@ -37,6 +37,9 @@ class Up implements CommandInterface {
 			}
 		}
 
+		// make sure the $availableMigrations are sorted by key
+		ksort($availableMigrations);
+
 		$success = true;
 		foreach ($availableMigrations as $revision => $filename) {
 			if (!isset($executedMigrations[$revision])) {
