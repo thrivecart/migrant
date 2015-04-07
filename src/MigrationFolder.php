@@ -39,7 +39,7 @@ class MigrationFolder {
 		foreach ($files as $file) {
 			list ($revision,) = explode('_', $file, 2);
 			if (ctype_digit(strval($revision)) && (substr($file, -4) === '.sql')) {
-				$hash[$revision]  = $file;
+				$hash[$revision] = $file;
 			}
 		}
 
