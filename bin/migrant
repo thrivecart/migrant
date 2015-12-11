@@ -10,8 +10,10 @@
 $autoLoader = false;
 
 $files = [
-	__DIR__ . '/../../../autoload.php', // composer dependency
-	__DIR__ . '/../vendor/autoload.php' // stand-alone package
+	__DIR__ . '/../autoload.php', // composer dependency (called from /vendor/bin dir)
+	__DIR__ . '/../../../autoload.php', // composer dependency (called from /vendor/fluxoft/migrant/bin - not recommended)
+	__DIR__ . '/../vendor/autoload.php', // stand-alone package (assuming one level deep, e.g. /migrations)
+	__DIR__ . '/../vendor/autoload.php' // stand-alone package (assuming two levels deep, e.g. /deploy/db)
 ];
 
 foreach ($files as $file) {
