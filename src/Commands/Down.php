@@ -30,7 +30,8 @@ class Down implements CommandInterface {
 				$message .= "Migrating down to target revision $downTo:\n\n";
 			}
 		} else {
-			$downTo = end(array_keys($executedMigrations));
+			$keys   = array_keys($executedMigrations);
+			$downTo = end($keys);
 			if (count($executedMigrations) > 0) {
 				$message .= "Migrating down by one: rolling back revision $downTo:\n\n";
 			}
@@ -51,7 +52,7 @@ class Down implements CommandInterface {
 				} catch (EnvironmentException $e) {
 					$message .= "FAILED!\n".$e->getMessage()."\n";
 					$message .= "\nStopping all further migrations.\n";
-					$success = false;
+					$success  = false;
 					break;
 				}
 			} else {

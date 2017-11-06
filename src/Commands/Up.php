@@ -31,7 +31,8 @@ class Up implements CommandInterface {
 				$message .= "Migrating up to target revision $upTo:\n\n";
 			}
 		} else {
-			$upTo = end(array_keys($availableMigrations));
+			$keys = array_keys($availableMigrations);
+			$upTo = end($keys);
 			if ($pendingMigrations > 0) {
 				$message .= "Migrating all:\n\n";
 			}
