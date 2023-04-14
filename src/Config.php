@@ -6,21 +6,17 @@ use \Fluxoft\Migrant\Exceptions\ConfigException;
 
 class Config implements \ArrayAccess {
 	private $config = [];
-	public function __construct($iniFileOrConfig, $environmentName) {
-		if(is_array($iniFileOrConfig)) {
-			$config = $iniFileOrConfig;
-		} else {
-			if (!is_file($iniFile)) {
-				throw new ConfigException(sprintf(
-					'No config file was found at "%s". If you have not yet run "migrant init" in this folder, do so now.',
-					$iniFile
-				));
-			}
-			$config = parse_ini_file($iniFile, true);
+	public function __construct($iniFile, $environmentName) {
+		if (!is_file($iniFile)) {
+			throw new ConfigException(sprintf(
+				'No config file was found at "%s". If you have not yet run "migrant init" in this folder, do so now.',
+				$iniFile
+			));
 		}
+		$config = parse_ini_file($iniFile, true);
 		if (!isset($config[$environmentName])) {
 			throw new ConfigException(sprintf(
-				'No configuration for the environment "%s" was found. Please check the migrant.ini file or incoming config block.',
+				'No configuration for the environment "%s" was found. Please check the migrant.ini file.',
 				$environmentName
 			));
 		}
@@ -28,7 +24,7 @@ class Config implements \ArrayAccess {
 		foreach (['type', 'host', 'dbname'] as $setting) {
 			if (!isset($this->config[$setting])) {
 				throw new ConfigException(sprintf(
-					'The "%s" must be set for "%s" in the migrant.ini file or config block.',
+					'The "%s" must be set for "%s" in the migrant.ini file.',
 					$setting,
 					$environmentName
 				));
