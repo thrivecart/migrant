@@ -1,5 +1,5 @@
 {
-	"name": "fluxoft/migrant",
+	"name": "marcfowler/migrant",
 	"description": "Migrant: A simple utility for database migration.",
 	"type": "library",
 	"keywords": ["migrant", "database", "migration", "php"],
@@ -8,6 +8,10 @@
 		{
 			"name": "fluxoft",
 			"email": "joe@fluxoft.com"
+		},
+		{
+			"name": "marcfowler",
+			"email": "marc.fowler@defraction.net"	
 		}
 	],
 	"require": {
