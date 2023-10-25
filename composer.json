@@ -1,5 +1,5 @@
 {
-	"name": "marcfowler/migrant",
+	"name": "tcdev/migrant",
 	"description": "Migrant: A simple utility for database migration.",
 	"type": "library",
 	"keywords": ["migrant", "database", "migration", "php"],
